@@ -137,7 +137,7 @@ include("../config/db.php");
 <!-- ⚖️ Términos legales -->
 <section id="legal" class="container my-5">
   <h2 class="text-center mb-4">Términos legales</h2>
-  <p>Este sitio web cumple con la normativa vigente en materia de comercio electrónico y protección de datos. Al realizar una compra, aceptas nuestras condiciones de uso y política de privacidad.</p>
+  <p class="text-center">Este sitio web cumple con la normativa vigente en materia de comercio electrónico y protección de datos. Al realizar una compra, aceptas nuestras condiciones de uso y política de privacidad.</p>
 </section>
 
 <!-- 🔻 Footer -->
