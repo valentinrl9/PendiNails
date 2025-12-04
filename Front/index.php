@@ -46,24 +46,40 @@ include("../config/db.php");
   </div>
 </section>
 
-<!-- 🎠 Carrusel de productos destacados -->
 <section id="destacados" class="container my-5">
   <h2 class="text-center mb-4">Productos destacados</h2>
   <div id="pendinailsCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <?php
-      // Incluimos también el campo 'descripcion'
       $result = $conn->query("SELECT id_producto, nombre, descripcion, precio, imagen_url FROM productos WHERE destacado = 1");
       $active = true;
       while($row = $result->fetch_assoc()) {
           echo '<div class="carousel-item text-center '.($active ? 'active' : '').'">';
-          echo '<img src="'.$row['imagen_url'].'" class="d-block mx-auto carousel-img" alt="'.$row['nombre'].'">';
+          // Imagen con enlace al modal
+          echo '<img src="'.$row['imagen_url'].'" class="d-block mx-auto carousel-img" alt="'.$row['nombre'].'" data-bs-toggle="modal" data-bs-target="#modal-'.$row['id_producto'].'">';
           echo '<h5>'.$row['nombre'].'</h5>';
-          // Mostramos la descripción debajo del nombre
           echo '<p class="descripcion">'.$row['descripcion'].'</p>';
-          echo '<p>'.$row['precio'].' €</p>';
+          echo '<p class="precio">'.$row['precio'].' €</p>';
           echo '<a href="#comprar-'.$row['id_producto'].'" class="btn-elegante"><span>Comprar ahora</span></a>';
           echo '</div>';
+
+          // Modal para cada producto
+          echo '
+          <div class="modal fade" id="modal-'.$row['id_producto'].'" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">'.$row['nombre'].'</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="'.$row['imagen_url'].'" class="img-fluid" alt="'.$row['nombre'].'">
+                  <p class="descripcion mt-3">'.$row['descripcion'].'</p>
+                  <p class="precio">'.$row['precio'].' €</p>
+                </div>
+              </div>
+            </div>
+          </div>';
           $active = false;
       }
       ?>
@@ -76,6 +92,7 @@ include("../config/db.php");
     </button>
   </div>
 </section>
+
 
   <!-- 🔍 Buscador de PendiNails -->
   <section id="productos" class="container my-5">
