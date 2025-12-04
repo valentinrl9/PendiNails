@@ -52,12 +52,15 @@ include("../config/db.php");
   <div id="pendinailsCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <?php
-      $result = $conn->query("SELECT id_producto, nombre, precio, imagen_url FROM productos WHERE destacado = 1");
+      // Incluimos también el campo 'descripcion'
+      $result = $conn->query("SELECT id_producto, nombre, descripcion, precio, imagen_url FROM productos WHERE destacado = 1");
       $active = true;
       while($row = $result->fetch_assoc()) {
           echo '<div class="carousel-item text-center '.($active ? 'active' : '').'">';
           echo '<img src="'.$row['imagen_url'].'" class="d-block mx-auto carousel-img" alt="'.$row['nombre'].'">';
-          echo '<h3>'.$row['nombre'].'</h3>';
+          echo '<h5>'.$row['nombre'].'</h5>';
+          // Mostramos la descripción debajo del nombre
+          echo '<p class="descripcion">'.$row['descripcion'].'</p>';
           echo '<p>'.$row['precio'].' €</p>';
           echo '<a href="#comprar-'.$row['id_producto'].'" class="btn-elegante"><span>Comprar ahora</span></a>';
           echo '</div>';

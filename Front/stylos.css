@@ -146,19 +146,35 @@ body {
 .carousel-item img,
 .carousel-img {
   border: 5px solid #ffb6c1;              /* Marco dorado */
-  border-radius: 12px;                 /* Bordes redondeados */
+  border-radius: 12px;                    /* Bordes redondeados */
   box-shadow: 0 6px 18px rgba(0,0,0,0.3); /* Sombra elegante */
-  max-height: 250px;                   /* Ajusta altura */
-  max-width: 200px;                    /* Ajusta ancho */
-  object-fit: contain;                 /* Mantiene proporción */
-  margin: auto;                        /* Centrado */
+  max-height: 250px;                      /* Ajusta altura */
+  max-width: 200px;                       /* Ajusta ancho */
+  object-fit: contain;                    /* Mantiene proporción */
+  margin: auto;                           /* Centrado */
 }
 
+/* Nombre más pequeño */
+.carousel h5 {
+  font-size: 1rem;        /* Más pequeño que el tamaño por defecto */
+  font-weight: normal;    /* Menos énfasis */
+  color: #444;            /* Gris oscuro para suavizar */
+  margin-top: 8px;
+}
 
-.carousel h3, 
-.carousel p {
+/* Descripción destacada */
+.carousel .descripcion {
+  font-size: 1.2rem;      /* Un poco más grande */
+  font-weight: bold;      /* Negrita para resaltar */
+  color: #c2185b;         /* Rosa fuerte para destacar */
+  margin-top: 6px;
+}
+
+/* Precio (se mantiene elegante) */
+.carousel .precio {
+  font-size: 1rem;
   color: #111;
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
 .carousel-indicators {
